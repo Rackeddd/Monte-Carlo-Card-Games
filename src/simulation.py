@@ -87,7 +87,9 @@ def dealer_turn(hand, deck):
         hand.append(card)
         deck.remove(card)
     return hand
-        
+
+
+# TEST SAMPLE
 deck = create_deck()
 print(len(deck))
 play_hand(deck)
