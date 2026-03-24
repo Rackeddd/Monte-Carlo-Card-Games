@@ -44,33 +44,27 @@ def hand_value(hand):
     return total
 
 # deals hands to player and dealer, runs both turns, and determines the winner
+
+# CHANGES MADE TO FIX THE RETURN STATEMENTS
 def play_hand(deck):
     player_hand = deal_hand(deck)
     dealer_hand = deal_hand(deck)
-
     if hand_value(player_hand) == 21:
-        print("Blackjack! You win!")
-        return
-
+        return "win"
     player_hand = player_turn(player_hand, deck)
     dealer_hand = dealer_turn(dealer_hand, deck)
-
     player_total = hand_value(player_hand)
     dealer_total = hand_value(dealer_hand)
-
-    print(f"Player hand: {player_hand}, total: {player_total}")
-    print(f"Dealer hand: {dealer_hand}, total: {dealer_total}")
-
     if player_total > 21:
-        print("Bust! You lose!")
+        return "loss"
     elif dealer_total > 21:
-        print("Dealer busts! You win!")
+        return "win"
     elif player_total > dealer_total:
-        print("You win!")
+        return "win"
     elif player_total < dealer_total:
-        print("Dealer wins!")
+        return "loss"
     else:
-        print("Push! It's a tie!")
+        return "tie"
 
 # function to hit if card deck is less then 17 (required for sim)
 def player_turn(hand, deck):
